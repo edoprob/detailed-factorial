@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap.css">
+    <link rel="stylesheet" href="assets/self-style.css">
+
+    <title></title>
+  </head>
+  <body onload="document.input.factorial.focus();">
+    <div class="container">
+      <hr>
+      <h4>Questão 02: Calcular fatorial</h4>
+
+      <p>Crie um componente que tenha uma caixa de texto que só aceita números e tenha o rótulo (label) Calcular o fatorial de. O componente deve calcular o fatorial do número digitado, imprimido o resultado e o tempo necessário para a execução. (Dica: usar o objeto javascript Date)
+
+      O resultado deve ser mostrado no formato XXXXXX (yyy milisegundos);
+      O código deve calcular o fatorial e não apenas imprimir uma string com a resposta.</p>
+      <div class="card">
+        <div class="card-header">
+          <form name="input" action="#">
+            <label>Calcucalar fatorial: (limit: 99)</label><br>
+            <input type="text" id="factorial" maxlength="2" onkeyup="Calculate()">
+            <br><br>
+          </form>
+        </div>
+        <div class="card-body" id="result">
+
+        </div>
+      </div>
+    </div>    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/jquery.js"></script>
+    <script src="assets/popper.js"></script>
+    <script src="assets/bootstrap.js"></script>
+    <script type="text/javascript">
+      function Calculate(){
+
+        var timeValue = Date.now();
+        var timeResult;
+        var value = document.getElementById("factorial").value;
+        var resultInput = document.getElementById("result");
+        var amount = new Array;
+        var print;
+        var result;
+        var i = value - 1;
+
+        //removendo todas as respostas, se existirem
+        while(resultInput.firstChild) {
+          resultInput.removeChild(resultInput.firstChild);
+        }
+
+        //validando inputs
+        if (isNaN(value) || value.indexOf() > -1) {
+          document.getElementById("factorial").value = "";
+          document.getElementById("factorial").focus();
+          alert("invalid number");
+          throw new Error("invalid number");
+        }
+
+        //declarando o primeiro numero no array
+        amount[i] = parseInt(value, 10);
+        print = amount[i];
+        result = value;
+        value--
+        i--
+
+        //calculando o for inteiro
+        for (i; i >= 0; i--) {
+          amount[i] = parseInt(value, 10);
+          result = result * value;
+          print = print+"*"+value;
+
+          var element = document.createElement("p");
+          timeResult = Date.now() - timeValue;
+
+          element.innerHTML = print+" = "+result+" ("+timeResult+" milliseconds)";
+          resultInput.appendChild(element);
+          value--
+          console.log(result);
+        }
+      }
+    </script>
+  </body>
+</html>
